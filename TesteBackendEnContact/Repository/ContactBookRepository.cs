@@ -36,13 +36,10 @@ namespace TesteBackendEnContact.Repository
         {
             using var connection = new SqliteConnection(databaseConfig.ConnectionString);
 
-            // TODO
-            var sql = "";
+            var sql = "DELETE FROM ContactBook WHERE Id = @id;";
 
-            await connection.ExecuteAsync(sql);
+            await connection.ExecuteAsync(sql, new { id });
         }
-
-
 
 
         public async Task<IEnumerable<IContactBook>> GetAllAsync()
